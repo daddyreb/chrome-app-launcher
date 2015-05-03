@@ -20,6 +20,13 @@
       .then(function(){
         $scope.saved = true;
 
+        chrome.management.getSelf(function (extension) {
+            chrome.runtime.sendMessage(extension.id, {
+                name: 'iconColorChanged',
+                data: '#0000FF'
+            });
+        });
+
         $timeout(function() {
           $scope.saved = false;
         }, 1000);

@@ -1,7 +1,7 @@
 {
     "name": "Apps Launcher",
     "description": "Launch Chrome apps using a fancy popup. Reorder them as you like.",
-    "version": "1.1",
+    "version": "1.2",
     "incognito": "split",
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "permissions": [
@@ -19,6 +19,10 @@
         },
         "default_title": "Apps",
         "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [ "scripts/background/eventPage.js" ],
+        "persistent": false
     },
     "options_page": "options.html",
     "commands": {

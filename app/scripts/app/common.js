@@ -39,6 +39,7 @@
       return {
         'iconSize': 'large',
         'searchBar': 'off',
+        'iconColor': null
       };
     };
 

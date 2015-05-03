@@ -63,6 +63,37 @@ module.exports = function (grunt) {
             }
         },
 
+        manifest: {
+            generate: {
+                options: {
+                    basePath: '<%= config.dist %>'
+                },
+                src: [ 
+                    'fonts/*.ttf',
+                    'styles/*.css',
+                    'scripts/*.js',
+                    'popup.html',
+                    'options.html'
+                ],
+                dest: '<%= config.dist %>/manifest.appcache'
+            }
+        },
+
+        rev: {
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 8
+            },
+            assets: {
+                files: [{
+                    src: [
+                        '<%= config.dist %>/scripts/{,*/}*.js',
+                        '<%= config.dist %>/styles/{,*/}*.css'                     ]
+                }]
+            }
+        },
+
         // Grunt server and debug server setting
         connect: {
             options: {
@@ -222,7 +253,9 @@ module.exports = function (grunt) {
         //             '<%= config.dist %>/scripts/{,*/}*.js': [
         //                 '<%= config.dist %>/scripts/{,*/}*.js'
         //             ]
-        //         }
+        //         },
+        //         ASCIIOnly: true,
+        //         quote_style: 3
         //     }
         // },
         // concat: {
@@ -309,6 +342,7 @@ module.exports = function (grunt) {
                 }]
             }
         }
+
     });
 
     grunt.registerTask('debug', function () {
@@ -335,7 +369,9 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy',
+        'rev',
         'usemin',
+        'manifest',
         'compress'
     ]);
 
