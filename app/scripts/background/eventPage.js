@@ -45,11 +45,13 @@
     function colorize(color, imageData) {
         var rgbColor = hexToRgb(color);
 
-        for (var i = 0; i < imageData.data.length; i+4) {
-            var red = imageData[i],
-                green = imageData[i + 1],
-                blue = imageData[i + 2],
-                alpha = imageData[i + 3];
+        var data = imageData.data;
+
+        for (var i = 0; i < data.length; i = i + 4) {
+            var red = data[i],
+                green = data[i + 1],
+                blue = data[i + 2],
+                alpha = data[i + 3];
 
             if (red === 255 && green === 255 && blue === 255) {
                 continue;
